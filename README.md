@@ -12,10 +12,4 @@ Table of Contents
 Features
 ========
 
-----------
-+        +
-+   GUI  +
-+        +
-----------
-
 [Back to TOC](#table-of-contents)

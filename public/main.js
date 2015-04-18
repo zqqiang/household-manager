@@ -1,17 +1,22 @@
 require(
 	[
-		'jquery', 'app',
-
+		'jquery', 'app', 'router',
+		'views/dummy',
 		'bootstrap', 'highcharts'
 	],
 	function(
-		$, app, Router
+		$, app, Router,
+		Dummy
 	) {
 		$(document).ready(function() {
 			app.start({
 				msg: "start up"
 			});
 		});
+
+		app.navigateTo = function(context, options) {
+			app.mainRegion.show(new Dummy());
+		};
 
 		app.addInitializer(function(options) {
 			app.addRegions({
@@ -20,8 +25,15 @@ require(
 				footerRegion: 'footer[role="contentinfo"]',
 			});
 
-			// app.headerRegion.show(new Navbar());
-			// app.footerRegion.show(new Footer());
+			app.headerRegion.show(new Dummy({
+				module: 'headerRegion'
+			}));
+			app.mainRegion.show(new Dummy({
+				module: 'mainRegion'
+			}));
+			app.footerRegion.show(new Dummy({
+				module: 'footerRegion'
+			}));
 
 			Backbone.history.start();
 		});

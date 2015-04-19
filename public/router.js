@@ -5,10 +5,12 @@ define(
 	function(Backbone, app) {
 		var Router = Backbone.Router.extend({
 			routes: {
-				"*other": "defaultRouter",
+				'Home': 'defaultRouter',
+				"*all": "defaultRouter",
 			},
-			defaultRouter: function(other) {
-				app.navigateTo("other");
+			defaultRouter: function(all) {
+				console.log(all);
+				app.navigateTo(all);
 			}
 		});
 		return Router;

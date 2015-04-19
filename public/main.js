@@ -1,12 +1,12 @@
 require(
 	[
 		'jquery', 'app', 'router',
-		'views/dummy',
+		'views/dummy', 'views/context', 'views/navbar',
 		'bootstrap', 'highcharts'
 	],
 	function(
 		$, app, Router,
-		Dummy
+		Dummy, Context, Navbar
 	) {
 		$(document).ready(function() {
 			app.start({
@@ -14,8 +14,9 @@ require(
 			});
 		});
 
-		app.navigateTo = function(context, options) {
-			app.mainRegion.show(new Dummy());
+		app.navigateTo = function(name, options) {
+			console.log(name);
+			app.mainRegion.show(new Context(name, options));
 		};
 
 		app.addInitializer(function(options) {
@@ -25,9 +26,7 @@ require(
 				footerRegion: 'footer[role="contentinfo"]',
 			});
 
-			app.headerRegion.show(new Dummy({
-				module: 'headerRegion'
-			}));
+			app.headerRegion.show(new Navbar());
 			app.mainRegion.show(new Dummy({
 				module: 'mainRegion'
 			}));

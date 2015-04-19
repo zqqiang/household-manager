@@ -1,14 +1,14 @@
 define(
 	[
 		'handlebars',
-		// 'text!templates/dummy.html',
+		'text!templates/navbar.html',
 	],
 	function(
-		Handlebars
-		// DummyTpl
+		Handlebars,
+		NavbarTpl
 	) {
 		return {
-			// DummyTemplate: Handlebars.compile(DummyTpl),
+			NavbarTemplate: Handlebars.compile(NavbarTpl),
 		};
 	}
 );

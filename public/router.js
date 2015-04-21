@@ -3,14 +3,12 @@ define(
 		'backbone', 'app'
 	],
 	function(Backbone, app) {
-		var Router = Backbone.Router.extend({
+		var Router = Backbone.Marionette.AppRouter.extend({
 			routes: {
-				'Home': 'defaultRouter',
-				"*all": "defaultRouter",
+				"*all": "Default",
 			},
-			defaultRouter: function(all) {
-				console.log(all);
-				app.navigateTo(all);
+			Default: function(module) {
+				app.navigateTo(module);
 			}
 		});
 		return Router;

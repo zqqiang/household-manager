@@ -15,7 +15,6 @@ require(
 		});
 
 		app.navigateTo = function(name, options) {
-			console.log(name);
 			app.mainRegion.show(new Context(name, options));
 		};
 
@@ -27,13 +26,12 @@ require(
 			});
 
 			app.headerRegion.show(new Navbar());
-			app.mainRegion.show(new Dummy({
-				module: 'mainRegion'
-			}));
-			app.footerRegion.show(new Dummy({
-				module: 'footerRegion'
-			}));
 
+			// app.footerRegion.show(new Dummy({
+			// 	module: 'footerRegion'
+			// }));
+
+			new Router();
 			Backbone.history.start();
 		});
 	}

@@ -2,7 +2,7 @@ define(['marionette', 'templates/compiled'], function(Marionette, JST) {
 	var Dummy = Marionette.ItemView.extend({
 		template: JST.NavbarTemplate,
 		tagName: 'nav',
-		className: 'navbar navbar-default',
+		className: 'navbar navbar-inverse navbar-static-top',
 		initialize: function(options) {
 			var Model = Backbone.Model.extend({});
 			this.model = new Model({

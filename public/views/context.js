@@ -1,6 +1,7 @@
-define(['marionette', 'views/home'], function(Marionette, Home) {
+define(['marionette', 'views/home', 'views/login'], function(Marionette, Home, Login) {
 	var map = {
 		'Home': Home,
+		'Login': Login,
 	};
 
 	return function(context, options) {

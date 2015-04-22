@@ -1,34 +1,35 @@
 define(['marionette', 'templates/compiled'], function(Marionette, JST) {
 
-    // Add Behaviors
-    window.Behaviors = {};
-    Marionette.Behaviors.behaviorsLookup = function() {
-        return window.Behaviors;
-    }
+	var Login = Marionette.ItemView.extend({
+		template: JST.LoginTemplate,
+		className: 'login-page',
+		ui: {
+			'submit': 'span[type="submit"]'
+		},
+		events: {
+			'click @ui.submit': 'submitLogin'
+		},
+		getValues: function() {
+			return {
+				username: this.$el.find('#username').val(),
+				password: this.$el.find('#password').val(),
+			};
+		},
+		submitLogin: function() {
+			var payload = this.getValues();
+			$.ajax({
+				url: 'data/Login',
+				type: 'POST',
+				data: payload
+			}).success(function(data, textStatus, jqXHR) {
 
-    var SubmitLogin = Marionette.Behavior.extend({
-        events: {
-            'click @ui.submit': 'submitLogin'
-        },
-        submitLogin: function() {
-            console.log('submit');
-        }
-    });
+			}).fail(function(jqXHR, textStatus, errorThrown) {
+				console.error(jqXHR.responseText);
+				alert(jqXHR.responseText);
+			});
+		}
 
-    window.Behaviors.SubmitLogin = SubmitLogin;
+	});
 
-    var Login = Marionette.ItemView.extend({
-        template: JST.LoginTemplate,
-        className: 'login-page',
-        ui: {
-            'submit': 'span[type="submit"]'
-        },
-        behaviors: {
-            SubmitLogin: {
-
-            }
-        }
-    });
-
-    return Login;
+	return Login;
 });

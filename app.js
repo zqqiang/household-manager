@@ -6,11 +6,17 @@ var bodyParser = require('body-parser');
 var debug = require('debug')('app');
 var app = express();
 
+//routes
+var login = require('./routes/login');
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+//routes register
+app.use('/data/Login', login);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {

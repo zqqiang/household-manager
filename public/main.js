@@ -19,6 +19,7 @@ require(
 		};
 
 		app.addInitializer(function(options) {
+			// Add Regions
 			app.addRegions({
 				headerRegion: 'header[role="banner"]',
 				mainRegion: 'main[role="main"]',
@@ -27,10 +28,7 @@ require(
 
 			app.headerRegion.show(new Navbar());
 
-			// app.footerRegion.show(new Dummy({
-			// 	module: 'footerRegion'
-			// }));
-
+			// Add Router
 			new Router();
 			Backbone.history.start();
 		});

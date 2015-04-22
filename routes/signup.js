@@ -10,16 +10,18 @@ router.post('/', function(req, res) {
 
 	Model.find({
 		username: req.body.username,
-		password: req.body.password,
 	}, function(err, models) {
 		if (err) console.error(err);
 		console.log('match count: ', models.length);
 		if (models.length) {
-			res.json({});
-		} else {
 			res.statusCode = 401;
 			res.json({
-				message: 'The username password not match!'
+				message: 'The username already signup!'
+			});
+		} else {
+			Model.create(req.body, function(err, model) {
+				if (err) console.error(err);
+				res.json(model);
 			});
 		}
 	});

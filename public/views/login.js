@@ -1,4 +1,4 @@
-define(['marionette', 'templates/compiled'], function(Marionette, JST) {
+define(['app', 'marionette', 'templates/compiled'], function(app, Marionette, JST) {
 
 	var Login = Marionette.ItemView.extend({
 		template: JST.LoginTemplate,
@@ -22,7 +22,8 @@ define(['marionette', 'templates/compiled'], function(Marionette, JST) {
 				type: 'POST',
 				data: payload
 			}).success(function(data, textStatus, jqXHR) {
-
+				$('#user').html(payload.username);
+				window.location.href = '#Shop';
 			}).fail(function(jqXHR, textStatus, errorThrown) {
 				console.error(jqXHR.responseText);
 				alert(jqXHR.responseText);

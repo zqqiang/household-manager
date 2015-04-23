@@ -9,6 +9,7 @@ var app = express();
 //routes
 var login = require('./routes/login');
 var signup = require('./routes/signup');
+var buy = require('./routes/buy');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -19,6 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //routes register
 app.use('/data/Login', login);
 app.use('/data/Signup', signup);
+app.use('/data/Buy', buy);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {

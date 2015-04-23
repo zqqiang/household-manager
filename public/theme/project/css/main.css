@@ -6547,14 +6547,13 @@ button.close {
     display: none !important;
   }
 }
-.home-page {
-  padding: 50px 100px;
-}
-.login-page {
-  padding: 50px 500px;
-}
+.home-page,
+.login-page,
 .signup-page {
-  padding: 50px 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
 }
 a,
 h1,
@@ -6562,4 +6561,31 @@ h4,
 label,
 span {
   font-family: Microsoft YaHei, '宋体', Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
+}
+.pagination-wrap {
+  text-align: center;
+}
+.product-item {
+  overflow: hidden;
+  padding-bottom: 32px;
+}
+.product-item img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.product-item h2 {
+  font-size: 18px;
+  line-height: 1.2;
+  padding: 0 !important;
+  margin-top: 6px;
+  margin-bottom: 2px;
+}
+.product-item h2 .item-price {
+  color: #FF0000;
+}
+.product-item p {
+  font-size: 12px;
+  line-height: 1.3;
+  color: #555555;
 }

@@ -23,6 +23,10 @@ define(['app', 'marionette', 'templates/compiled'], function(app, Marionette, JS
 				data: payload
 			}).success(function(data, textStatus, jqXHR) {
 				$('#user').html(payload.username);
+
+				// document.cookie['username'] = payload.username;
+				// document.cookie['password'] = payload.password;
+
 				window.location.href = '#Shop';
 			}).fail(function(jqXHR, textStatus, errorThrown) {
 				console.error(jqXHR.responseText);

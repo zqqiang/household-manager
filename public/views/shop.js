@@ -10,11 +10,13 @@ define(['marionette', 'templates/compiled'], function(Marionette, JST) {
 		},
 		buy: function(e) {
 			var price = $(e.target).attr('price');
+			var order = $($(e.target).context.parentNode).find('p').html();
 			$.ajax({
 				url: 'data/Buy',
 				type: 'POST',
 				data: {
-					price: price
+					order: order,
+					price: price,
 				}
 			}).success(function(data, textStatus, jqXHR) {
 

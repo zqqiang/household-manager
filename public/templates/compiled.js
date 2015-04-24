@@ -6,6 +6,8 @@ define(
 		'text!templates/login.html',
 		'text!templates/signup.html',
 		'text!templates/shop.html',
+		'text!templates/account.html',
+		'text!templates/employee.html',
 	],
 	function(
 		Handlebars,
@@ -13,7 +15,9 @@ define(
 		HomeTpl,
 		LoginTpl,
 		SignupTpl,
-		ShopTpl
+		ShopTpl,
+		AccountTpl,
+		EmployeeTpl
 	) {
 		return {
 			NavbarTemplate: Handlebars.compile(NavbarTpl),
@@ -21,6 +25,8 @@ define(
 			LoginTemplate: Handlebars.compile(LoginTpl),
 			SignupTemplate: Handlebars.compile(SignupTpl),
 			ShopTemplate: Handlebars.compile(ShopTpl),
+			AccountTemplate: Handlebars.compile(AccountTpl),
+			EmployeeTemplate: Handlebars.compile(EmployeeTpl),
 		};
 	}
 );

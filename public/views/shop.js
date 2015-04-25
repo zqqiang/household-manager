@@ -19,7 +19,7 @@ define(['marionette', 'templates/compiled'], function(Marionette, JST) {
 					price: price,
 				}
 			}).success(function(data, textStatus, jqXHR) {
-
+				alert('Success!');
 			}).fail(function(jqXHR, textStatus, errorThrown) {
 				console.error(jqXHR.responseText);
 				alert(jqXHR.responseText);

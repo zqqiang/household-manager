@@ -1,4 +1,4 @@
-define(['marionette', 'templates/compiled'], function(Marionette, JST) {
+define(['marionette', 'templates/compiled', 'lib/cookie'], function(Marionette, JST, Cookie) {
 	var EmployeeRowView = Marionette.ItemView.extend({
 		template: JST.EmployeeRowTemplate,
 		tagName: 'tr',
@@ -71,9 +71,15 @@ define(['marionette', 'templates/compiled'], function(Marionette, JST) {
 			customerTable: '#customerTable',
 		},
 		onShow: function() {
-			this.employeeTable.show(new EmployeeTableView());
-			this.designerTable.show(new DesignerTableView());
-			this.customerTable.show(new CustomerTableView());
+			var cookie = Cookie.getCookie();
+			if ('admin' === cookie.username && 'pass' === cookie.password) {
+				this.employeeTable.show(new EmployeeTableView());
+				this.designerTable.show(new DesignerTableView());
+				this.customerTable.show(new CustomerTableView());
+			} else {
+
+			}
+
 		}
 	});
 

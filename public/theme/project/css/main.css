@@ -6550,18 +6550,28 @@ button.close {
 .home-page,
 .login-page,
 .signup-page,
-.account-table,
-.employee-grid {
+.employee-table,
+.designer-table,
+.employee-table {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 800px;
 }
+.customer-table {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+}
 a,
 h1,
 h4,
 label,
-span {
+span,
+caption,
+th,
+td {
   font-family: Microsoft YaHei, '宋体', Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
 }
 .pagination-wrap {

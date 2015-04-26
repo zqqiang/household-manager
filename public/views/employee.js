@@ -1,7 +1,7 @@
 define(['marionette', 'templates/compiled'], function(Marionette, JST) {
 	var Dummy = Marionette.ItemView.extend({
 		template: JST.EmployeeTemplate,
-		className: 'employee-grid',
+		className: 'employee-table',
 		ui: {
 			'submit': 'span[type="submit"]'
 		},

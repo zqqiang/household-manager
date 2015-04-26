@@ -7,8 +7,8 @@ define(
 		'text!templates/signup.html',
 		'text!templates/shop.html',
 		'text!templates/account.html',
-		'text!templates/employee.html',
-		'text!templates/row.html',
+		'text!templates/employeeTable.html',
+		'text!templates/employeeRow.html',
 	],
 	function(
 		Handlebars,
@@ -18,8 +18,8 @@ define(
 		SignupTpl,
 		ShopTpl,
 		AccountTpl,
-		EmployeeTpl,
-		RowTpl
+		EmployeeTableTpl,
+		EmployeeRowTpl
 	) {
 		return {
 			NavbarTemplate: Handlebars.compile(NavbarTpl),
@@ -28,8 +28,8 @@ define(
 			SignupTemplate: Handlebars.compile(SignupTpl),
 			ShopTemplate: Handlebars.compile(ShopTpl),
 			AccountTemplate: Handlebars.compile(AccountTpl),
-			EmployeeTemplate: Handlebars.compile(EmployeeTpl),
-			RowTemplate: Handlebars.compile(RowTpl),
+			EmployeeTableTemplate: Handlebars.compile(EmployeeTableTpl),
+			EmployeeRowTemplate: Handlebars.compile(EmployeeRowTpl),
 		};
 	}
 );

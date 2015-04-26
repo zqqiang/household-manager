@@ -8,18 +8,20 @@ var _ = require('underscore');
 router.post('/', function(req, res) {
 	console.log('body: ', req.body);
 
-	var mockUser = {
-		username: 'admin',
-		password: 'pass'
-	};
-
 	var context = {};
+
+	var Cookies = {};
+	req.headers.cookie && req.headers.cookie.split(';').forEach(function(Cookie) {
+		var parts = Cookie.split('=');
+		Cookies[parts[0].trim()] = (parts[1] || '').trim();
+	});
+	console.log('Cookies: %s', JSON.stringify(Cookies));
 
 	async.series([function(callback) {
 		var LoginModel = Models['Login'];
 		LoginModel.find({
-			username: mockUser.username, //mock
-			password: mockUser.password,
+			username: Cookies.username,
+			password: Cookies.password,
 		}, function(err, models) {
 			if (err) callback(err);
 			if (models.length) {
@@ -27,7 +29,7 @@ router.post('/', function(req, res) {
 				console.log('Designer [%s]', context.designer);
 				callback(null, models[0].designer);
 			} else {
-				callback('Can not find designer for user [' + mockUser.username + ']');
+				callback('Can not find designer for user [' + Cookies.username + ']');
 			}
 		});
 	}, function(callback) {
@@ -55,7 +57,7 @@ router.post('/', function(req, res) {
 			//order create
 			var OrderModel = Models['Order'];
 			OrderModel.create({
-				username: mockUser.username,
+				username: Cookies.username,
 				order: req.body.order,
 				price: req.body.price,
 				designer: results[0],

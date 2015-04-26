@@ -1,23 +1,33 @@
 define(['marionette', 'templates/compiled'], function(Marionette, JST) {
-	var RowView = Marionette.ItemView.extend({
-		template: JST.RowTemplate,
+	var EmployeeRowView = Marionette.ItemView.extend({
+		template: JST.EmployeeRowTemplate,
 		tagName: 'tr',
 	});
 
-	var Account = Marionette.CompositeView.extend({
-		template: JST.AccountTemplate,
+	var EmployeeTableView = Marionette.CompositeView.extend({
+		template: JST.EmployeeTableTemplate,
 		className: 'account-table',
-		childView: RowView,
+		childView: EmployeeRowView,
 		childViewContainer: "tbody",
 		initialize: function() {
+			var Context = this.model.get('context');
+
 			var Model = Backbone.Model.extend({});
 			var Collection = Backbone.Collection.extend({
 				model: Model,
-				url: '/data/Employee'
+				url: '/data/Account/Employee',
 			});
 			this.collection = new Collection();
 			this.collection.fetch();
 		}
+	});
+
+	var Account = Marionette.LayoutView.extend({
+		className: 'account-body',
+		template: JST.AccountTemplate,
+		initialize: function() {
+
+		},
 	});
 
 	return Account;

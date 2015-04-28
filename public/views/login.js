@@ -16,13 +16,15 @@ define(['app', 'marionette', 'templates/compiled'], function(app, Marionette, JS
 			};
 		},
 		submitLogin: function() {
+			var self = this;
 			var payload = this.getValues();
 			$.ajax({
 				url: 'data/Login',
 				type: 'POST',
 				data: payload
 			}).success(function(data, textStatus, jqXHR) {
-				$('#user').html(payload.username);
+				app.execute('render-login-user', payload.username);
+				app.execute('render-manage-employee');
 
 				document.cookie = 'username=' + payload.username;
 				document.cookie = 'password=' + payload.password;

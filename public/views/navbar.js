@@ -1,4 +1,4 @@
-define(['marionette', 'templates/compiled'], function(Marionette, JST) {
+define(['app', 'marionette', 'templates/compiled'], function(app, Marionette, JST) {
 	var Dummy = Marionette.ItemView.extend({
 		template: JST.NavbarTemplate,
 		tagName: 'nav',
@@ -13,6 +13,16 @@ define(['marionette', 'templates/compiled'], function(Marionette, JST) {
 			var Model = Backbone.Model.extend({});
 			this.model = new Model({
 				module: options.module
+			});
+
+			var self = this;
+
+			app.commands.setHandler('render-login-user', function(name) {
+				self.$el.find('#user').html(name);
+			});
+
+			app.commands.setHandler('render-manage-employee', function() {
+				self.$el.find('#employee').html('<a href="#Employee"><i class="glyphicon glyphicon-usd"></i> <span>员工管理</span> </a>');
 			});
 		},
 		logout: function() {

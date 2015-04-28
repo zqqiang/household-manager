@@ -77,7 +77,7 @@ define(['marionette', 'templates/compiled', 'lib/cookie'], function(Marionette, 
 				this.designerTable.show(new DesignerTableView());
 				this.customerTable.show(new CustomerTableView());
 			} else {
-
+				
 			}
 
 		}

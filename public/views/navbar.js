@@ -21,8 +21,10 @@ define(['app', 'marionette', 'templates/compiled'], function(app, Marionette, JS
 				self.$el.find('#user').html(name);
 			});
 
-			app.commands.setHandler('render-manage-employee', function() {
-				self.$el.find('#employee').html('<a href="#Employee"><i class="glyphicon glyphicon-usd"></i> <span>员工管理</span> </a>');
+			app.commands.setHandler('render-manage-employee', function(username) {
+				if ('admin' === username) {
+					self.$el.find('#employee').html('<a href="#Employee"><i class="glyphicon glyphicon-usd"></i> <span>员工管理</span> </a>');
+				}
 			});
 		},
 		logout: function() {

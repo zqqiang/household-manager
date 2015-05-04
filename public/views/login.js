@@ -24,7 +24,7 @@ define(['app', 'marionette', 'templates/compiled'], function(app, Marionette, JS
 				data: payload
 			}).success(function(data, textStatus, jqXHR) {
 				app.execute('render-login-user', payload.username);
-				app.execute('render-manage-employee');
+				app.execute('render-manage-employee', payload.username);
 
 				document.cookie = 'username=' + payload.username;
 				document.cookie = 'password=' + payload.password;

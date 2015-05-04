@@ -4,10 +4,12 @@ define(['app', 'marionette', 'templates/compiled'], function(app, Marionette, JS
 		template: JST.SignupTemplate,
 		className: 'signup-page',
 		ui: {
-			'submit': 'span[type="submit"]'
+			'submit': 'span[type="submit"]',
+			'userType': '#userType'
 		},
 		events: {
-			'click @ui.submit': 'submitSignup'
+			'click @ui.submit': 'submitSignup',
+			'change @ui.userType': 'userTypeChange'
 		},
 		getValues: function() {
 			return {
@@ -16,6 +18,14 @@ define(['app', 'marionette', 'templates/compiled'], function(app, Marionette, JS
 				confirmPassword: this.$el.find('#confirm-password').val(),
 				designer: this.$el.find('#designer').val(),
 			};
+		},
+		userTypeChange: function() {
+			var type = this.$el.find('#userType').val();
+			if ('user' === type) {
+				this.$el.find('#designer').show();
+			} else {
+				this.$el.find('#designer').hide();
+			}
 		},
 		submitSignup: function() {
 			var payload = this.getValues();

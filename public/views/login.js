@@ -23,13 +23,28 @@ define(['app', 'marionette', 'templates/compiled'], function(app, Marionette, JS
 				type: 'POST',
 				data: payload
 			}).success(function(data, textStatus, jqXHR) {
-				app.execute('render-login-user', payload.username);
-				app.execute('render-manage-employee', payload.username);
+				console.log(data.type);
+				if ('admin' === data.type) {
+					app.execute('render-navbar', {
+						type: 'admin',
+						name: payload.username
+					});
 
-				document.cookie = 'username=' + payload.username;
-				document.cookie = 'password=' + payload.password;
+					document.cookie = 'username=' + payload.username;
+					document.cookie = 'password=' + payload.password;
 
-				window.location.href = '#Shop';
+					window.location.href = '#Shop';
+				} else if ('employee' === data.type) {
+					app.execute('render-navbar', {
+						type: 'employee',
+						name: payload.username
+					});
+
+					document.cookie = 'username=' + payload.username;
+					document.cookie = 'password=' + payload.password;
+				} else if ('user' === data.type) {
+
+				}
 			}).fail(function(jqXHR, textStatus, errorThrown) {
 				console.error(jqXHR.responseText);
 				alert(jqXHR.responseText);

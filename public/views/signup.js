@@ -16,6 +16,7 @@ define(['app', 'marionette', 'templates/compiled'], function(app, Marionette, JS
 				username: this.$el.find('#username').val(),
 				password: this.$el.find('#password').val(),
 				confirmPassword: this.$el.find('#confirm-password').val(),
+				usertype: this.$el.find('#userType').val(),
 				designer: this.$el.find('#designer').val(),
 			};
 		},

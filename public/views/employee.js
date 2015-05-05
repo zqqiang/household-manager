@@ -11,7 +11,6 @@ define(['marionette', 'templates/compiled'], function(Marionette, JST) {
 		getValues: function() {
 			return {
 				employee: this.$el.find('#employee').val(),
-				designer: this.$el.find('#designer').val(),
 			};
 		},
 		submit: function() {

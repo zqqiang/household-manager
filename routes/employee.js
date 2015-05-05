@@ -12,7 +12,6 @@ router.post('/', function(req, res) {
 
 	Model.find({
 		employee: req.body.employee,
-		designer: req.body.designer,
 	}, function(err, models) {
 		if (err) console.error(err);
 		console.log('match count: ', models.length);
@@ -22,7 +21,12 @@ router.post('/', function(req, res) {
 				message: 'The designer already added!'
 			});
 		} else {
-			Model.create(req.body, function(err, model) {
+			var body = _.extend(req.body, {
+				password: 'pass',
+				designer: []
+			});
+
+			Model.create(body, function(err, model) {
 				if (err) console.error(err);
 				res.json(model);
 			});

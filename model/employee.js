@@ -2,7 +2,10 @@ var mongoose = require('../db/db');
 
 var Employee = mongoose.model('Employee', {
 	employee: String,
-	designer: String,
+	password: String,
+	designer: [{
+		name: String
+	}],
 });
 
 module.exports = Employee;

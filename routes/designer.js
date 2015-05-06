@@ -31,6 +31,20 @@ router.post('/', function(req, res) {
 				if (err) console.error(err);
 				res.json(model);
 			});
+
+			var EmployeeModel = Models['Employee'];
+			var cookie = cookies.get(req);
+			var employee = cookie.username;
+			EmployeeModel.update({
+				employee: employee,
+			}, {
+				$push: {
+					designer: req.body.designer
+				}
+			}, {}, function(err, raw) {
+				if (err) console.error(err);
+				console.log('The raw response from Mongo was ', raw);
+			});
 		}
 	});
 });

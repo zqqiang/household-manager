@@ -6552,7 +6552,8 @@ button.close {
 .signup-page,
 .employee-table,
 .designer-table,
-.employee-table {
+.employee-table,
+.designer-form {
   display: block;
   margin-left: auto;
   margin-right: auto;

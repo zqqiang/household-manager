@@ -5,28 +5,16 @@ define(['app', 'marionette', 'templates/compiled'], function(app, Marionette, JS
 		className: 'signup-page',
 		ui: {
 			'submit': 'span[type="submit"]',
-			'userType': '#userType'
 		},
 		events: {
 			'click @ui.submit': 'submitSignup',
-			'change @ui.userType': 'userTypeChange'
 		},
 		getValues: function() {
 			return {
 				username: this.$el.find('#username').val(),
 				password: this.$el.find('#password').val(),
 				confirmPassword: this.$el.find('#confirm-password').val(),
-				usertype: this.$el.find('#userType').val(),
-				designer: this.$el.find('#designer').val(),
 			};
-		},
-		userTypeChange: function() {
-			var type = this.$el.find('#userType').val();
-			if ('user' === type) {
-				this.$el.find('#designer').show();
-			} else {
-				this.$el.find('#designer').hide();
-			}
 		},
 		submitSignup: function() {
 			var payload = this.getValues();
@@ -37,7 +25,6 @@ define(['app', 'marionette', 'templates/compiled'], function(app, Marionette, JS
 					data: {
 						username: payload.username,
 						password: payload.password,
-						designer: payload.designer,
 					}
 				}).success(function(data, textStatus, jqXHR) {
 					window.location.href = '#Login';
@@ -49,8 +36,6 @@ define(['app', 'marionette', 'templates/compiled'], function(app, Marionette, JS
 				alert('password is different with confirm passord!');
 			}
 		}
-
 	});
-
 	return Login;
 });

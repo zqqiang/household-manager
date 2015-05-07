@@ -4,7 +4,6 @@ var router = express.Router();
 var Models = require('../model/models');
 
 function UserProcess(req, res) {
-
 	var UserModel = Models['Login'];
 	UserModel.find({
 		username: req.body.username,
@@ -14,7 +13,7 @@ function UserProcess(req, res) {
 		console.log('match count: ', models.length);
 		if (models.length) {
 			res.json({
-				type: 'user'
+				type: 'customer'
 			});
 		} else {
 			res.statusCode = 401;
@@ -23,7 +22,24 @@ function UserProcess(req, res) {
 			});
 		}
 	});
+};
 
+function DesignerProcess(req, res) {
+	var DesignerModel = Models['Designer'];
+	DesignerModel.find({
+		designer: req.body.username,
+		password: req.body.password,
+	}, function(err, models) {
+		if (err) console.error(err);
+		console.log('match count: ', models.length);
+		if (models.length) {
+			res.json({
+				type: 'designer'
+			});
+		} else {
+			UserProcess(req, res);
+		}
+	});
 };
 
 router.post('/', function(req, res) {
@@ -50,7 +66,7 @@ router.post('/', function(req, res) {
 				type: 'employee'
 			});
 		} else {
-			UserProcess(req, res);
+			DesignerProcess(req, res);
 		}
 	});
 

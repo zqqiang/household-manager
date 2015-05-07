@@ -42,8 +42,22 @@ define(['app', 'marionette', 'templates/compiled'], function(app, Marionette, JS
 
 					document.cookie = 'username=' + payload.username;
 					document.cookie = 'password=' + payload.password;
-				} else if ('user' === data.type) {
+				} else if ('designer' === data.type) {
+					app.execute('render-navbar', {
+						type: 'designer',
+						name: payload.username
+					});
 
+					document.cookie = 'username=' + payload.username;
+					document.cookie = 'password=' + payload.password;
+				} else if ('customer' === data.type) {
+					app.execute('render-navbar', {
+						type: 'customer',
+						name: payload.username
+					});
+
+					document.cookie = 'username=' + payload.username;
+					document.cookie = 'password=' + payload.password;
 				}
 			}).fail(function(jqXHR, textStatus, errorThrown) {
 				console.error(jqXHR.responseText);

@@ -25,6 +25,11 @@ define(['app', 'marionette', 'templates/compiled'], function(app, Marionette, JS
 				} else if ('employee' === options.type) {
 					self.$el.find('#dashboard').html('<a href="#Designer"><i class="glyphicon glyphicon-user"></i> <span>设计师管理</span> </a>');
 					self.$el.find('#manager').html('<a href="#EmployeeAccount"><i class="glyphicon glyphicon-usd"></i> <span>' + options.name + '</span> </a>');
+				} else if ('designer' === options.type) {
+					self.$el.find('#dashboard').html('<a href="#Customer"><i class="glyphicon glyphicon-user"></i> <span>客户管理</span> </a>');
+					self.$el.find('#manager').html('<a href="#DesignerAccount"><i class="glyphicon glyphicon-usd"></i> <span>' + options.name + '</span> </a>');
+				} else if ('customer' === options.type) {
+					self.$el.find('#manager').html('<a href="#CustomerAccount"><i class="glyphicon glyphicon-usd"></i> <span>' + options.name + '</span> </a>');
 				}
 			});
 		},

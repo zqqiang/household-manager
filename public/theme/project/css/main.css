@@ -6553,7 +6553,8 @@ button.close {
 .employee-table,
 .designer-table,
 .employee-table,
-.designer-form {
+.designer-form,
+.customer-form {
   display: block;
   margin-left: auto;
   margin-right: auto;

@@ -81,8 +81,8 @@ var designersProcess = function(models, res) {
 		} else {
 			var result = _.map(designers, function(value, key) {
 				return {
-					employee: key,
-					designer: _.uniq(value.customer).toString(),
+					designer: key,
+					customer: _.uniq(value.customer).toString(),
 					sale: value.sale,
 				};
 			});
@@ -111,7 +111,6 @@ router.get('/', function(req, res) {
 				}
 			}, function(err, models) {
 				if (err) return console.error(err);
-				console.log(models);
 				designersProcess(models, res);
 			});
 		} else {

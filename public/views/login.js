@@ -58,6 +58,8 @@ define(['app', 'marionette', 'templates/compiled'], function(app, Marionette, JS
 
 					document.cookie = 'username=' + payload.username;
 					document.cookie = 'password=' + payload.password;
+
+					window.location.href = '#Shop';
 				}
 			}).fail(function(jqXHR, textStatus, errorThrown) {
 				console.error(jqXHR.responseText);

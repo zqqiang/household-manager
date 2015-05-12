@@ -5,11 +5,9 @@ define(['app', 'marionette', 'templates/compiled'], function(app, Marionette, JS
 		className: 'navbar navbar-inverse navbar-static-top',
 		ui: {
 			'logout': '#logout',
-			'brand': 'a.navbar-brand'
 		},
 		events: {
 			'click @ui.logout': 'logout',
-			'click @ui.brand': 'runExe'
 		},
 		initialize: function(options) {
 			var Model = Backbone.Model.extend({});
@@ -34,13 +32,11 @@ define(['app', 'marionette', 'templates/compiled'], function(app, Marionette, JS
 			});
 		},
 		logout: function() {
-			this.$el.find('#user').html('管理员');
+			this.$el.find('#manager').html('管理员');
+			document.cookie = 'username=';
+			document.cookie = 'password=';
+			window.location.href = '#Login';
 		},
-		runExe: function() {
-			// var oShell = new ActiveXObject("Shell.Application");
-			// var commandtoRun = "D:\\Program Files (x86)\\gj5s\\gj5s_3DDIY\\diy.exe";
-			// oShell.ShellExecute(commandtoRun, "", "", "open", "1");
-		}
 	});
 	return Dummy;
 });

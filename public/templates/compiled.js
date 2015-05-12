@@ -17,6 +17,9 @@ define(
 		'text!templates/customerRow.html',
 		'text!templates/employee/account.html',
 		'text!templates/customer/customer.html',
+		'text!templates/customer/account.html',
+		'text!templates/customer/orderTable.html',
+		'text!templates/customer/orderRow.html',
 	],
 	function(
 		Handlebars,
@@ -35,7 +38,10 @@ define(
 		CustomerTableTpl,
 		CustomerRowTpl,
 		EmployeeAccountTpl,
-		CustomerTpl
+		CustomerTpl,
+		CustomerAccountTpl,
+		OrderTableTpl,
+		OrderRowTpl
 	) {
 		return {
 			NavbarTemplate: Handlebars.compile(NavbarTpl),
@@ -54,6 +60,9 @@ define(
 			CustomerRowTemplate: Handlebars.compile(CustomerRowTpl),
 			EmployeeAccountTemplate: Handlebars.compile(EmployeeAccountTpl),
 			CustomerTemplate: Handlebars.compile(CustomerTpl),
+			CustomerAccountTemplate: Handlebars.compile(CustomerAccountTpl),
+			OrderTableTemplate: Handlebars.compile(OrderTableTpl),
+			OrderRowTemplate: Handlebars.compile(OrderRowTpl),
 		};
 	}
 );

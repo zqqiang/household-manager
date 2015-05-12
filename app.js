@@ -14,6 +14,7 @@ var employee = require('./routes/employee');
 var account = require('./routes/account');
 var designer = require('./routes/designer');
 var customer = require('./routes/customer');
+var order = require('./routes/order');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -29,6 +30,7 @@ app.use('/data/Employee', employee);
 app.use('/data/Account', account);
 app.use('/data/Designer', designer);
 app.use('/data/Customer', customer);
+app.use('/data/Order', order);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {

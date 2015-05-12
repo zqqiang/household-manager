@@ -6554,7 +6554,8 @@ button.close {
 .designer-table,
 .employee-table,
 .designer-form,
-.customer-form {
+.customer-form,
+.order-table {
   display: block;
   margin-left: auto;
   margin-right: auto;

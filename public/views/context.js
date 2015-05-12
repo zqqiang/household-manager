@@ -1,11 +1,13 @@
 define([
 	'marionette',
 	'views/home', 'views/login', 'views/signup', 'views/shop', 'views/account',
-	'views/employee', 'views/designer', 'views/employee/account', 'views/customer/customer'
+	'views/employee', 'views/designer', 'views/employee/account', 'views/customer/customer',
+	'views/customer/account'
 ], function(
 	Marionette,
 	Home, Login, Signup, Shop, Account,
-	Employee, Designer, EmployeeAccount, Customer
+	Employee, Designer, EmployeeAccount, Customer,
+	CustomerAccount
 ) {
 	var map = {
 		'Home': Home,
@@ -17,6 +19,7 @@ define([
 		'Designer': Designer,
 		'EmployeeAccount': EmployeeAccount,
 		'Customer': Customer,
+		'CustomerAccount': CustomerAccount,
 	};
 
 	return function(context, options) {

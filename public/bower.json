@@ -28,6 +28,7 @@
     "font-awesome": "~4.3.0",
     "masonry": "~3.2.2",
     "highstock-release": "~2.1.3",
-    "backbone.marionette": "~2.4.1"
+    "backbone.marionette": "~2.4.1",
+    "three.js": "~0.71.0"
   }
 }

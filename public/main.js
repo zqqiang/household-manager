@@ -2,7 +2,7 @@ require(
 	[
 		'jquery', 'app', 'router',
 		'views/dummy', 'views/context', 'views/navbar',
-		'bootstrap', 'highcharts'
+		'bootstrap', 'highcharts', 'three'
 	],
 	function(
 		$, app, Router,

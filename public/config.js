@@ -16,6 +16,7 @@ require.config({
         'bootbox': 'bower_components/bootbox/bootbox',
         'mobile-detect': 'bower_components/mobile-detect/mobile-detect',
         'masonry': 'bower_components/masonry/dist/masonry.pkgd',
+        'three': 'bower_components/three.js/three',
     },
 
     // non-AMD lib
@@ -32,6 +33,9 @@ require.config({
         },
         'handlebars': {
             exports: 'Handlebars'
+        },
+        'three': {
+            exports: 'THREE'
         },
     },
 });

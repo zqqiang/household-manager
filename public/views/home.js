@@ -94,16 +94,16 @@ define(['marionette', 'templates/compiled'], function(Marionette, JST) {
 
 			function init() {
 
-				container = document.createElement('div');
-				document.body.appendChild(container);
+				// container = document.createElement('div');
+				// document.body.appendChild(container);
 
-				var info = document.createElement('div');
-				info.style.position = 'absolute';
-				info.style.top = '10px';
-				info.style.width = '100%';
-				info.style.textAlign = 'center';
-				info.innerHTML = '<a href="http://threejs.org" target="_blank">three.js</a> - voxel painter - webgl<br><strong>click</strong>: add voxel, <strong>shift + click</strong>: remove voxel';
-				container.appendChild(info);
+				// var info = document.createElement('div');
+				// // info.style.position = 'absolute';
+				// info.style.top = '10px';
+				// info.style.width = '100%';
+				// info.style.textAlign = 'center';
+				// info.innerHTML = '<a href="http://threejs.org" target="_blank">three.js</a> - voxel painter - webgl<br><strong>click</strong>: add voxel, <strong>shift + click</strong>: remove voxel';
+				// container.appendChild(info);
 
 				camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
 				camera.position.set(500, 800, 1300);
@@ -128,8 +128,7 @@ define(['marionette', 'templates/compiled'], function(Marionette, JST) {
 				cubeMaterial = new THREE.MeshLambertMaterial({
 					color: 0xfeb74c,
 					shading: THREE.FlatShading,
-					// map: THREE.ImageUtils.loadTexture("textures/square-outline-textured.png")
-					map: THREE.ImageUtils.loadTexture("theme/project/img/house1.png")
+					map: THREE.ImageUtils.loadTexture("theme/project/img/square-outline-textured.png")
 				});
 
 				// grid
@@ -158,8 +157,6 @@ define(['marionette', 'templates/compiled'], function(Marionette, JST) {
 				var line = new THREE.Line(geometry, material, THREE.LinePieces);
 				scene.add(line);
 
-				//
-
 				raycaster = new THREE.Raycaster();
 				mouse = new THREE.Vector2();
 
@@ -186,15 +183,15 @@ define(['marionette', 'templates/compiled'], function(Marionette, JST) {
 				});
 				renderer.setClearColor(0xf0f0f0);
 				renderer.setPixelRatio(window.devicePixelRatio);
-				renderer.setSize(window.innerWidth, window.innerHeight);
-				container.appendChild(renderer.domElement);
+				renderer.setSize(/*window.innerWidth*/800, /*window.innerHeight*/660);
+
+				// container.appendChild(renderer.domElement);
+				$('div.3d').html(renderer.domElement);
 
 				document.addEventListener('mousemove', onDocumentMouseMove, false);
 				document.addEventListener('mousedown', onDocumentMouseDown, false);
 				document.addEventListener('keydown', onDocumentKeyDown, false);
 				document.addEventListener('keyup', onDocumentKeyUp, false);
-
-				//
 
 				window.addEventListener('resize', onWindowResize, false);
 

@@ -2,7 +2,54 @@ define(['marionette', 'templates/compiled'], function(Marionette, JST) {
 	var Home = Marionette.ItemView.extend({
 		template: JST.HomeTemplate,
 		className: 'home-page',
+		initialize: function() {
+			this.renderer = new THREE.WebGLRenderer();
+			this.renderer.setClearColor(0x000000, 1.0);
+			this.renderer.setSize(window.innerWidth, window.innerHeight);
+			this.renderer.shadowMapEnabled = true;
+
+			this.scene = new THREE.Scene();
+
+			this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+			this.camera.position.x = 15;
+			this.camera.position.y = 16;
+			this.camera.position.z = 13;
+			this.camera.lookAt(this.scene.position);
+
+			var geometry = new THREE.BoxGeometry(6, 4, 6);
+			var material = new THREE.MeshLambertMaterial({
+				color: "red"
+			});
+			var cube = new THREE.Mesh(geometry, material);
+			this.scene.add(cube);
+
+			var geometry = new THREE.PlaneGeometry(20, 20);
+			var planeMaterial = new THREE.MeshLambertMaterial({
+				color: 0xcccccc
+			});
+			var plane = new THREE.Mesh(geometry, planeMaterial);
+			plane.rotation.x = -0.5 * Math.PI;
+			plane.position.y = -2;
+			this.scene.add(plane);
+
+			var spotLight = new THREE.SpotLight(0xffffff);
+			spotLight.position.set(10, 20, 20);
+			spotLight.castShadow = true;
+			this.scene.add(spotLight);
+		},
 		onShow: function() {
+			this.demoCube();
+		},
+		demoCube: function() {
+			$('main[role="main"]').html(this.renderer.domElement);
+			this.render();
+		},
+		render: function() {
+			this.renderer.render(this.scene, this.camera);
+			requestAnimationFrame(this.render);
+		},
+		movingCube: function() {
+
 			/**
 			 * @author alteredq / http://alteredqualia.com/
 			 * @author mr.doob / http://mrdoob.com/
@@ -183,7 +230,7 @@ define(['marionette', 'templates/compiled'], function(Marionette, JST) {
 				});
 				renderer.setClearColor(0xf0f0f0);
 				renderer.setPixelRatio(window.devicePixelRatio);
-				renderer.setSize(/*window.innerWidth*/800, /*window.innerHeight*/660);
+				renderer.setSize( /*window.innerWidth*/ 800, /*window.innerHeight*/ 660);
 
 				// container.appendChild(renderer.domElement);
 				$('div.3d').html(renderer.domElement);

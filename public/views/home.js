@@ -20,14 +20,15 @@ define(['marionette', 'templates/compiled'], function(Marionette, JST) {
 			var material = new THREE.MeshLambertMaterial({
 				color: "red"
 			});
-			var cube = new THREE.Mesh(geometry, material);
-			this.scene.add(cube);
+			this.cube = new THREE.Mesh(geometry, material);
+			this.scene.add(this.cube);
 
 			var geometry = new THREE.PlaneGeometry(20, 20);
 			var planeMaterial = new THREE.MeshLambertMaterial({
 				color: 0xcccccc
 			});
 			var plane = new THREE.Mesh(geometry, planeMaterial);
+			plane.receiveShadow = true;
 			plane.rotation.x = -0.5 * Math.PI;
 			plane.position.y = -2;
 			this.scene.add(plane);
@@ -36,6 +37,18 @@ define(['marionette', 'templates/compiled'], function(Marionette, JST) {
 			spotLight.position.set(10, 20, 20);
 			spotLight.castShadow = true;
 			this.scene.add(spotLight);
+
+			this.control = new function() {
+				this.opacity = 0.6;
+				this.color = material.color.getHex();
+			}
+
+			this.addControlGui(this.control);
+		},
+		addControlGui: function(controlObject) {
+			var gui = new dat.GUI();
+			gui.add(controlObject, 'opacity', 0.1, 1);
+			gui.add(controlObject, 'color');
 		},
 		onShow: function() {
 			this.demoCube();
@@ -45,6 +58,8 @@ define(['marionette', 'templates/compiled'], function(Marionette, JST) {
 			this.render();
 		},
 		render: function() {
+			this.cube.material.opacity = this.control.opacity;
+			this.cube.material.color = new THREE.Color(this.control.color);
 			this.renderer.render(this.scene, this.camera);
 			requestAnimationFrame(this.render);
 		},

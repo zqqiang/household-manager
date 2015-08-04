@@ -17,6 +17,7 @@ require.config({
         'mobile-detect': 'bower_components/mobile-detect/mobile-detect',
         'masonry': 'bower_components/masonry/dist/masonry.pkgd',
         'three': 'bower_components/three.js/three',
+        'dat.gui': 'bower_components/dat.gui/dat.gui',
     },
 
     // non-AMD lib

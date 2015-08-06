@@ -1,4 +1,5 @@
 var express = require('express');
+var favicon = require('serve-favicon');
 var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -21,6 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(__dirname + '/public/theme/project/img/favicon.ico'));
 
 //routes register
 app.use('/data/Login', login);

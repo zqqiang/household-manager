@@ -4,7 +4,8 @@ define(['marionette', 'templates/compiled'], function(Marionette, JST) {
 		className: 'home-page',
 		onShow: function() {
 			// this.demoCube();
-			this.movingCube();
+			// this.movingCube();
+			this.houseDemo();
 		},
 		demoCube: function() {
 			var renderer = new THREE.WebGLRenderer();
@@ -64,6 +65,62 @@ define(['marionette', 'templates/compiled'], function(Marionette, JST) {
 			this.$el.find('div.control').html(gui.domElement);
 			gui.addColor(control, 'color');
 			return control;
+		},
+		houseDemo: function() {
+			var camera;
+
+			init();
+			render();
+
+			function init() {
+				camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
+				camera.position.set(500, 800, 1300);
+				camera.lookAt(new THREE.Vector3());
+
+				scene = new THREE.Scene();
+
+				var size = 500,
+					step = 50;
+
+				var geometry = new THREE.Geometry();
+
+				for (var i = -size; i <= size; i += step) {
+					geometry.vertices.push(new THREE.Vector3(-size, 0, i));
+					geometry.vertices.push(new THREE.Vector3(size, 0, i));
+
+					geometry.vertices.push(new THREE.Vector3(i, 0, -size));
+					geometry.vertices.push(new THREE.Vector3(i, 0, size));
+				}
+
+				var material = new THREE.LineBasicMaterial({
+					color: 0x000000,
+					opacity: 0.2,
+					transparent: true
+				});
+
+				var line = new THREE.Line(geometry, material, THREE.LinePieces);
+				scene.add(line);
+
+				var ambientLight = new THREE.AmbientLight(0x606060);
+				scene.add(ambientLight);
+
+				var directionalLight = new THREE.DirectionalLight(0xffffff);
+				directionalLight.position.set(1, 0.75, 0.5).normalize();
+				scene.add(directionalLight);
+
+				renderer = new THREE.WebGLRenderer({
+					antialias: true
+				});
+				renderer.setClearColor(0xf0f0f0);
+				renderer.setPixelRatio(window.devicePixelRatio);
+				renderer.setSize(window.innerWidth - 17, window.innerHeight);
+
+				$('div.3d').html(renderer.domElement);
+			}
+
+			function render() {
+				renderer.render(scene, camera);
+			}
 		},
 		movingCube: function() {
 

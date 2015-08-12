@@ -2,6 +2,9 @@ define(['marionette', 'templates/compiled'], function(Marionette, JST) {
 	var Home = Marionette.ItemView.extend({
 		template: JST.HomeTemplate,
 		className: 'home-page',
+		events: {
+			'mousemove': 'onMouseMove'
+		},
 		onShow: function() {
 			// this.demoCube();
 			// this.movingCube();
@@ -121,6 +124,9 @@ define(['marionette', 'templates/compiled'], function(Marionette, JST) {
 			function render() {
 				renderer.render(scene, camera);
 			}
+		},
+		onMouseMove: function(event) {
+			console.log('clientX[%d], clientY[%d]', event.clientX, event.clientY);
 		},
 		movingCube: function() {
 

@@ -14,12 +14,12 @@ import {
     Navigator
 } from 'react-native';
 
-var RouteMapper = function(route, navigator) {
-    if (route.name === 'search') {
+import {HomeScreen} from './HomeScreen';
+
+let RouteMapper = function(route, navigator) {
+    if (route.name === 'home') {
         return (
-            <View style={{flex: 1}}>
-                <Text onPress={() => navigator.push({name:'other'})} >Search</Text>
-            </View>
+            <HomeScreen navigator={navigator} />
         );
     } else if (route.name === 'other') {
         return (
@@ -32,7 +32,7 @@ var RouteMapper = function(route, navigator) {
 
 class app extends Component {
     render() {
-        var initialRoute = { name: 'search' };
+        let initialRoute = { name: 'home' };
         return (
             <Navigator
                 style={styles.container}
@@ -44,7 +44,7 @@ class app extends Component {
     }
 };
 
-var styles = StyleSheet.create({
+let styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'white',

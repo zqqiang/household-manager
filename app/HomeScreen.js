@@ -9,33 +9,8 @@ import {
     ToolbarAndroid,
 } from 'react-native';
 
+import Swiper from 'react-native-swiper';
 import { SearchBar } from './SearchBar';
-
-function ImageViewOne(navigator) {
-    return (
-        <TouchableOpacity 
-            style={styles.iamgeContainer}
-            onPress={() => navigator.push({ id: 2 })}
-        >
-            <Image 
-                source={require('./img/house1.jpg')} 
-            />
-        </TouchableOpacity>
-    );
-}
-
-function ImageViewTwo(navigator) {
-    return (
-        <TouchableOpacity 
-            style={styles.iamgeContainer}
-            onPress={() => navigator.pop()}
-        >
-            <Image 
-                source={require('./img/house2.jpg')} 
-            />
-        </TouchableOpacity>
-    );
-}
 
 class SearchSceen extends React.Component {
     render() {
@@ -67,11 +42,14 @@ class HomeScreen extends React.Component {
                     navIcon={require('./img/icon.png')}
                     actions={[{title: 'Settings'}]}
                 />
-                <Navigator 
-                    style={styles.navigator}
-                    initialRoute={{id:1}} 
-                    renderScene={this._renderScene} 
-                />
+                <Swiper style={styles.swiper} showsButtons={true} height={220} >
+                    <View style={styles.slide}>
+                        <Image style={styles.image} source={require('./img/house1.jpg')} />
+                    </View>
+                    <View style={styles.slide}>
+                        <Image style={styles.image} source={require('./img/house2.jpg')} />
+                    </View>
+                </Swiper>
                 <SearchSceen />
             </View>
         );
@@ -92,18 +70,18 @@ let styles = StyleSheet.create({
         backgroundColor: 'red',
         height: 56,
     },
-    iamgeContainer: {
-        backgroundColor: 'yellow',
-        height: 200
-    },
-    image: {
-        width: 360,
-        height: 220,
-    },
     separator: {
         height: 1,
         backgroundColor: '#eeeeee',
     },
+    swiper: {},
+    slide: {
+        height: 200
+    },
+    image: {
+        height: 220,
+        width: 360
+    }
 });
 
 export { HomeScreen }

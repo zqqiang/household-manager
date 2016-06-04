@@ -12,18 +12,6 @@ import {
 import Swiper from 'react-native-swiper';
 import { SearchBar } from './SearchBar';
 
-class SearchSceen extends React.Component {
-    render() {
-        return (
-            <View style={styles.container}>
-                <View style={styles.separator} />
-                <SearchBar />
-                <View style={styles.separator} />
-            </View>
-        );
-    }
-}
-
 class HomeScreen extends React.Component {
     _renderScene(route, navigator) {
         if (1 === route.id) {
@@ -50,7 +38,7 @@ class HomeScreen extends React.Component {
                         <Image style={styles.image} source={require('./img/house2.jpg')} />
                     </View>
                 </Swiper>
-                <SearchSceen />
+                <SearchBar />
             </View>
         );
     }
@@ -81,7 +69,10 @@ let styles = StyleSheet.create({
     image: {
         height: 220,
         width: 360
-    }
+    },
+    searchContainer: {
+
+    },
 });
 
 export { HomeScreen }

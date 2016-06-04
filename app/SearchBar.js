@@ -34,8 +34,7 @@ let styles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'white',
         height: 50,
-        padding: 0,
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
     },
 });
 

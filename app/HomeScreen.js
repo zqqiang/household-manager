@@ -10,7 +10,27 @@ import {
 } from 'react-native';
 
 import Swiper from 'react-native-swiper';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { SearchBar } from './SearchBar';
+
+class MainModule extends React.Component {
+    render() {
+        return (
+            <View style={styles.moduleContainer}>
+                <View style={styles.moduleRow}>
+                    <Icon style={styles.module} name="home" size={100} color="#F85944" />
+                    <Icon style={styles.module} name="home" size={100} color="#F85944" />
+                    <Icon style={styles.module} name="home" size={100} color="#F85944" />                
+                </View>
+                <View style={styles.moduleRow}>
+                    <Icon style={styles.module} name="home" size={100} color="#F85944" />
+                    <Icon style={styles.module} name="home" size={100} color="#F85944" />
+                    <Icon style={styles.module} name="home" size={100} color="#F85944" />
+                </View>
+            </View>
+        );
+    }
+}
 
 class HomeScreen extends React.Component {
     _renderScene(route, navigator) {
@@ -39,6 +59,7 @@ class HomeScreen extends React.Component {
                     </View>
                 </Swiper>
                 <SearchBar />
+                <MainModule />
             </View>
         );
     }
@@ -73,6 +94,18 @@ let styles = StyleSheet.create({
     searchContainer: {
 
     },
+    moduleContainer: {
+        backgroundColor: 'white',
+    },
+    moduleRow: {
+        flexDirection: 'row',
+        justifyContent: 'center'
+    },
+    module: {
+        padding: 5,
+        borderWidth: 1,
+        borderColor: '#ff0000'
+    }
 });
 
 export { HomeScreen }

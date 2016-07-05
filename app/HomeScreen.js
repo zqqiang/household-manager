@@ -16,7 +16,7 @@ import { SearchBar } from './SearchBar';
 class ModuleView extends React.Component {
     render() {
         return (
-            <View style={this.props.style}>
+            <View style={this.props.style} >
                 <Icon style={styles.icon} name={this.props.name} size={this.props.size} color={this.props.color} />
                 <Text style={styles.text}>
                     {this.props.text}

@@ -84,7 +84,9 @@ class HomeScreen extends React.Component {
                         <Image style={styles.image} source={require('./img/house2.jpg')} />
                     </View>
                 </Swiper>
-                <SearchBar />
+                <SearchBar
+                    onSearchChange={this.props.onSearchChange}
+                />
                 <MainModule />
                 <Tools />
             </View>

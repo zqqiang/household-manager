@@ -30,6 +30,10 @@ class SearchBar extends React.Component {
                 </TouchableNativeFeedback>
                 <TextInput 
                     ref="input"
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    autoFocus={true}
+                    onChange={this.props.onSearchChange}
                     placeholder="Search a house..." 
                     placeholderTextColor="rgba(155, 155, 155, 0.5)"
                     style={styles.searchBarInput}

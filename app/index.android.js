@@ -15,22 +15,38 @@ import {
 } from 'react-native';
 
 import { HomeScreen } from './HomeScreen';
-
-
+import { SearchBar } from './SearchBar';
 
 class app extends Component {
     RouteMapper(route, navigator) {
         if (route.name === 'home') {
             return (
                 <HomeScreen 
-                    navigator={navigator}
                     onSearchChange={(event: Object) => {
-                        let filter = event.nativeEvent.text.toLowerCase();
                         navigator.push({
-                            name: filter
+                            name: 'search',
+                            filter: event.nativeEvent.text
                         });
                     }}
                 />
+            );
+        } else if (route.name === 'search') {
+            return (
+                <View style={styles.container}>
+                    <SearchBar
+                        onSearchChange={(event: Object) => {
+                            navigator.push({
+                                name: 'search',
+                                filter: event.nativeEvent.text
+                            });                            
+                        }}
+                    />
+                    <View style={styles.separator} />
+                    <ListView 
+                        ref="listview"
+                        
+                    />
+                </View>
             );
         } else {
             return (

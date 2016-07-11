@@ -7,9 +7,14 @@ Household Manager
 Table of Contents
 =================
 
+* [Setup](#setup)
 * [Features](#features)
 * [Todos](#todos)
 
+
+Setup
+========
+1. 
 
 Features
 ========

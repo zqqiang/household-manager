@@ -15,7 +15,7 @@ import {
 } from 'react-native';
 
 import { HomeScreen } from './HomeScreen';
-import { SearchBar } from './SearchBar';
+import { SearchScreen } from './SearchScreen';
 
 class app extends Component {
     RouteMapper(route, navigator) {
@@ -31,23 +31,7 @@ class app extends Component {
                 />
             );
         } else if (route.name === 'search') {
-            return (
-                <View style={styles.container}>
-                    <SearchBar
-                        onSearchChange={(event: Object) => {
-                            navigator.push({
-                                name: 'search',
-                                filter: event.nativeEvent.text
-                            });                            
-                        }}
-                    />
-                    <View style={styles.separator} />
-                    <ListView 
-                        ref="listview"
-                        
-                    />
-                </View>
-            );
+            return (<SearchScreen navigator={navigator}/>);
         } else {
             return (
                 <View style={{flex: 1}}>

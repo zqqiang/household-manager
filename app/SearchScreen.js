@@ -10,8 +10,18 @@ import {
 import { SearchBar } from './SearchBar';
 
 class SearchScreen extends React.Component {
+    constructor(props) {
+        super(props);
+        const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+        this.state = {
+            dataSource: ds.cloneWithRows([])
+        };
+    }
     renderRow(rowData) {
-        return (<Text>{rowData}</Text>);
+        return (<Text>{rowData.title}</Text>);
+    }
+    getDataSource(movies: Array < any > ): ListView.DataSource {
+        return this.state.dataSource.cloneWithRows(movies);
     }
     render() {
         return (
@@ -29,7 +39,7 @@ class SearchScreen extends React.Component {
                         })
                         .then((responseData) => {
                             this.setState({
-                                dataSource: responseData.movies
+                                dataSource: this.getDataSource(responseData.movies)
                             });
                         })
                         .done();
@@ -38,7 +48,7 @@ class SearchScreen extends React.Component {
                 <View style={styles.separator} />
                 <ListView 
                     ref="listview"
-                    dataSource={['one', 'two']}
+                    dataSource={this.state.dataSource}
                     renderRow={this.renderRow}
                 />
             </View>

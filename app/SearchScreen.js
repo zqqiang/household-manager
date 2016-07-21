@@ -39,11 +39,12 @@ class SearchScreen extends React.Component {
                         })
                         .then((responseData) => {
                             this.setState({
-                                dataSource: this.getDataSource(responseData.movies)
+                                dataSource: this.getDataSource([{title:'one'},{title:'two'}])
                             });
                         })
                         .done();
                     }}
+                    onFocus={() => this.refs.listview && this.refs.listview.getScrollResponder().scrollTo({ x: 0, y: 0 })}
                 />
                 <View style={styles.separator} />
                 <ListView 

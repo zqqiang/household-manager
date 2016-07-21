@@ -36,6 +36,7 @@ class SearchBar extends React.Component {
                     onChange={this.props.onSearchChange}
                     placeholder="Search a house..." 
                     placeholderTextColor="rgba(155, 155, 155, 0.5)"
+                    onFocus={this.props.onFocus}
                     style={styles.searchBarInput}
                 />
             </View>

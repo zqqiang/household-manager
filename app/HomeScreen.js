@@ -59,13 +59,6 @@ class Tools extends React.Component {
 }
 
 class HomeScreen extends React.Component {
-    _renderScene(route, navigator) {
-        if (1 === route.id) {
-            return ImageViewOne(navigator);
-        } else if (2 === route.id) {
-            return ImageViewTwo(navigator);
-        }
-    }
     render() {
         return (
             <View style={styles.container}>

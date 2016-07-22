@@ -28,10 +28,6 @@ class SearchScreen extends React.Component {
             <View style={styles.container}>
                 <SearchBar
                     onSearchChange={(event: Object) => {
-                        this.props.navigator.push({
-                            name: 'search',
-                            filter: event.nativeEvent.text
-                        });
                         fetch('http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=7waqfqbprs7pajbz28mqf6vz&q=pet&page_limit=20&page=1')
                         .then((response) => response.json())
                         .catch((error) => {
@@ -39,7 +35,7 @@ class SearchScreen extends React.Component {
                         })
                         .then((responseData) => {
                             this.setState({
-                                dataSource: this.getDataSource([{title:'one'},{title:'two'}])
+                                dataSource: this.getDataSource(responseData.movies)
                             });
                         })
                         .done();

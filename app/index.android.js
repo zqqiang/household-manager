@@ -19,6 +19,7 @@ import { SearchScreen } from './SearchScreen';
 
 class app extends Component {
     RouteMapper(route, navigator) {
+        // todo: pass navigator to each router
         if (route.name === 'home') {
             return (
                 <HomeScreen 

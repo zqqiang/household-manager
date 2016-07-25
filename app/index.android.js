@@ -19,18 +19,9 @@ import { SearchScreen } from './SearchScreen';
 
 class app extends Component {
     RouteMapper(route, navigator) {
-        // todo: pass navigator to each router
         if (route.name === 'home') {
-            return (
-                <HomeScreen 
-                    onSearchChange={(event: Object) => {
-                        navigator.push({
-                            name: 'search',
-                            filter: event.nativeEvent.text
-                        });
-                    }}
-                />
-            );
+            // todo: can not use navigator in HomeScreen ?
+            return (<HomeScreen navigator={navigator} />);
         } else if (route.name === 'search') {
             return (<SearchScreen navigator={navigator}/>);
         } else {

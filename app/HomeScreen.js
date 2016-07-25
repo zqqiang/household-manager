@@ -59,6 +59,13 @@ class Tools extends React.Component {
 }
 
 class HomeScreen extends React.Component {
+    onSearchChange(event: Object) {
+        console.log(event.nativeEvent.text);
+        this.props.navigator.push({
+            name: 'search',
+            filter: event.nativeEvent.text
+        });
+    }
     render() {
         return (
             <View style={styles.container}>
@@ -78,7 +85,7 @@ class HomeScreen extends React.Component {
                     </View>
                 </Swiper>
                 <SearchBar
-                    onSearchChange={this.props.onSearchChange}
+                    onSearchChange={this.onSearchChange}
                 />
                 <MainModule />
                 <Tools />

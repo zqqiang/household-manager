@@ -12,6 +12,16 @@ import {
 var IS_RIPPLE_EFFECT_SUPPORTED = Platform.Version >= 21;
 
 class SearchBar extends React.Component {
+    onChangeText(text) {
+        // todo: need to separate home search bar and search screen bar
+        if ('HomeScreen' === this.props.parent) {
+            // this.props.navigator.push({
+            //     name: 'search',
+            //     filter: text
+            // });
+        }
+        console.log(text);
+    }
     render() {
         var background = IS_RIPPLE_EFFECT_SUPPORTED ?
             TouchableNativeFeedback.SelectableBackgroundBorderless() :
@@ -33,7 +43,7 @@ class SearchBar extends React.Component {
                     autoCapitalize="none"
                     autoCorrect={false}
                     autoFocus={true}
-                    onChange={this.props.onSearchChange}
+                    onChangeText={this.onChangeText.bind(this)}
                     placeholder="Search a house..." 
                     placeholderTextColor="rgba(155, 155, 155, 0.5)"
                     onFocus={this.props.onFocus}

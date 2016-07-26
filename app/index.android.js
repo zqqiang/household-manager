@@ -17,13 +17,12 @@ import {
 import { HomeScreen } from './HomeScreen';
 import { SearchScreen } from './SearchScreen';
 
-class app extends Component {
+class app extends React.Component {
     RouteMapper(route, navigator) {
         if (route.name === 'home') {
-            // todo: can not use navigator in HomeScreen ?
             return (<HomeScreen navigator={navigator} />);
         } else if (route.name === 'search') {
-            return (<SearchScreen navigator={navigator}/>);
+            return (<SearchScreen navigator={navigator} />);
         } else {
             return (
                 <View style={{flex: 1}}>

@@ -7,6 +7,7 @@ import {
     Navigator,
     TouchableOpacity,
     ToolbarAndroid,
+    TouchableNativeFeedback
 } from 'react-native';
 
 import Swiper from 'react-native-swiper';
@@ -16,22 +17,38 @@ import { SearchBar } from './SearchBar';
 class ModuleView extends React.Component {
     render() {
         return (
-            <View style={this.props.style} >
-                <Icon style={styles.icon} name={this.props.name} size={this.props.size} color={this.props.color} />
-                <Text style={styles.text}>
-                    {this.props.text}
-                </Text>
-            </View>
+            <TouchableNativeFeedback 
+                onPress={this.props.onPress} 
+                background={TouchableNativeFeedback.SelectableBackground()} >
+                <View style={this.props.style} >
+                    <Icon style={styles.icon} name={this.props.name} size={this.props.size} color={this.props.color} />
+                    <Text style={styles.text}>
+                        {this.props.text}
+                    </Text>
+                </View>
+            </TouchableNativeFeedback>
         );
     }
 }
 
 class MainModule extends React.Component {
+    onPress() {
+        this.props.navigator.push({
+            name: 'search'
+        });
+    }
     render() {
         return (
             <View style={styles.moduleContainer}>
                 <View style={styles.moduleRow}>
-                    <ModuleView name="home" text="New" size={50} color="#F85944" style={styles.moduleView} />
+                    <ModuleView 
+                        name="home" 
+                        text="New" 
+                        size={50} 
+                        color="#F85944" 
+                        style={styles.moduleView} 
+                        onPress={this.onPress.bind(this)} 
+                        navigator={this.props.navigator} />
                     <ModuleView name="user-plus" text="Used" size={50} color="#F85944" style={styles.moduleView} />
                     <ModuleView name="graduation-cap" text="School" size={50} color="#F85944" style={styles.moduleView} />
                 </View>
@@ -80,11 +97,7 @@ class HomeScreen extends React.Component {
                         <Image style={styles.image} source={require('./img/house2.jpg')} />
                     </View>
                 </Swiper>
-                <SearchBar
-                    navigator={this.props.navigator}
-                    parent='HomeScreen'
-                />
-                <MainModule />
+                <MainModule navigator={this.props.navigator}/>
                 <Tools />
             </View>
         );

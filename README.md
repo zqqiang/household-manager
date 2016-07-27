@@ -14,8 +14,13 @@ Table of Contents
 
 Setup
 ========
-1. adb reverse tcp:8081 tcp:8081
-2. react-native run-android
+### debug on device
+1. react-native run-android
+2. adb reverse tcp:8081 tcp:8081
+
+### debug using wifi
+1. react-native start --port 8081
+2. [Configure your app to connect to the local dev server via Wi-Fi](https://facebook.github.io/react-native/docs/running-on-device-android.html#configure-your-app-to-connect-to-the-local-dev-server-via-wi-fi)
 
 Debug
 ========

@@ -30,7 +30,6 @@ class SearchScreen extends React.Component {
             <View style={styles.container}>
                 <SearchBar
                     navigator={this.props.navigator}
-                    parent='SearchScreen'
                     onSearchChange={(event: Object) => {
                         fetch('http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=7waqfqbprs7pajbz28mqf6vz&q=pet&page_limit=20&page=1')
                         .then((response) => response.json())

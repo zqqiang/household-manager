@@ -13,14 +13,10 @@ var IS_RIPPLE_EFFECT_SUPPORTED = Platform.Version >= 21;
 
 class SearchBar extends React.Component {
     onChangeText(text) {
-        // todo: need to separate home search bar and search screen bar
-        if ('HomeScreen' === this.props.parent) {
-            // this.props.navigator.push({
-            //     name: 'search',
-            //     filter: text
-            // });
-        }
         console.log(text);
+        if ('home' === text) {
+            this.props.navigator.pop();
+        }
     }
     render() {
         var background = IS_RIPPLE_EFFECT_SUPPORTED ?

@@ -33,9 +33,7 @@ class ModuleView extends React.Component {
 
 class MainModule extends React.Component {
     onPress() {
-        this.props.navigator.push({
-            name: 'search'
-        });
+
     }
     render() {
         return (
@@ -75,19 +73,37 @@ class Tools extends React.Component {
     }
 }
 
+let toolbarActions = [{
+    title: 'Search',
+    iconName: 'search',
+    iconSize: 30,
+    show: 'always'
+}, {
+    title: 'Settings',
+    iconName: 'cog',
+    iconSize: 30,
+    show: 'always'
+}];
+
 class HomeScreen extends React.Component {
-    constructor(props) {
-        super(props);
+    onActionSelected(pos) {
+        if (0 === pos) {
+            this.props.navigator.push({
+                name: 'search'
+            });
+        } else if (1 === pos) {
+            console.log('navigate to settings');
+        }
     }
     render() {
         return (
             <View style={styles.container}>
-                <ToolbarAndroid 
+                <Icon.ToolbarAndroid 
                     style={styles.toolbar}
                     title='HouseHold'
                     titleColor='white'
-                    navIcon={require('./img/icon.png')}
-                    actions={[{title: 'Settings'}]}
+                    actions={toolbarActions}
+                    onActionSelected={this.onActionSelected.bind(this)}
                 />
                 <Swiper style={styles.swiper} showsButtons={true} height={220} >
                     <View style={styles.slide}>
@@ -108,6 +124,8 @@ let styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'white',
+        flexDirection: 'column',
+        justifyContent: 'space-between'
     },
     navigator: {
         backgroundColor: 'green',

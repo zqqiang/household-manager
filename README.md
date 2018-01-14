@@ -35,3 +35,5 @@ adb logcat *:S ReactNative:V ReactNativeJS:V
 ```
 *cmd /k "%ConEmuDir%\..\init.bat"  -new_console:d:%USERPROFILE% -new_console:d:D:\Workspaces\Project
 ```
+## License
+Licensed under the MIT license.

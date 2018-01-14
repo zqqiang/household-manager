@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/zqqiang/household-manager/issues"
   },
-  "homepage": "https://github.com/zqqiang/household-manager#readme"
+  "homepage": "https://github.com/zqqiang/household-manager#readme",
+  "dependencies": {
+    "vue": "^2.5.13"
+  }
 }

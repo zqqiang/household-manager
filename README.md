@@ -5,7 +5,7 @@ The target is to make household market management quickly and easy.
 
 ## Getting started
 
-You can view a live demo over at https://localhost/
+You can view a live demo over at https://localhost:8000
 
 To get the frontend running locally:
 

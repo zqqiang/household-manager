@@ -8,8 +8,10 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot",
-    "watch-go": "fresh"
+    "front": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot",
+    "watch-js": "webpack -w --config webpack.config.js",
+    "watch-go": "fresh",
+    "dev": "concurrently -k \"npm run watch-js\" \"npm run watch-go\""
   },
   "repository": {
     "type": "git",
@@ -28,6 +30,7 @@
     "webpack-dev-server": "^2.11.0"
   },
   "devDependencies": {
+    "concurrently": "^3.5.1",
     "cross-env": "^5.1.3"
   }
 }

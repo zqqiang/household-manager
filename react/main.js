@@ -1,8 +1,8 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 
-// require("babel-polyfill");
-// require('whatwg-fetch');
+import App from './components/App';
 
-ReactDOM.render(<div>Gin React Demo! Let's go!</div>,
-    document.getElementById('app'));
+ReactDOM.render((
+    <App />
+), document.getElementById('app'));
